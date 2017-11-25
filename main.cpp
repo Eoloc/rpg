@@ -1,32 +1,40 @@
 #include <iostream>
 #include <string>
 #include "Personnage.h"
-//#include "Personnage.cpp"
-//#include "Arme.h"
-//#include "Arme.cpp"
 
 using namespace std;
 
-
 int main()
 {
-  string pseudoUser;
+  string pseudoUser("Eoloc");
   bool sortiMenu(false), sortiArene(false);
   int choixMenu(1000), deplacementMenu(1000),
   choixArene(1000);
   
   cout << endl << endl;
   
-    // Création des personnages
-  Personnage persoUser("Epée courte", 10);
+  // CrÃ©ation des personnages
+  Personnage persoUser(pseudoUser);
   
-  cout << "Entré votre pseudo : ";
+  //CrÃ©ation des enemies
+  Personnage enemie0("Sanglier", 20, 0, "Corne", 3);
+  
+  enemie0.attaquer(persoUser);
+  persoUser.attaquer(enemie0);
+  
+  enemie0.afficherEtat();
+  persoUser.afficherEtat();
+  
+  /**
+  cout << "EntrÃ© votre pseudo : ";
   cin >> pseudoUser;
+  
+  //Place creation perso
   
   do{ //DEBUT BOUCLE MENU
     
   cout << endl << " -- MENU --" << endl;
-  cout << "1: Arène" << endl;
+  cout << "1: ArÃ¨ne" << endl;
   cout << "2: Personnage" << endl;
   cout << "0: Quitter" << endl;
   cin >> choixMenu;
@@ -35,6 +43,8 @@ int main()
   {
     case 0: {
       sortiMenu = true;
+      sortiArene = true;
+      deplacementMenu = 0;
       break;
     }
     case 1: {
@@ -42,7 +52,6 @@ int main()
       break;
     }
     case 2: {
-      cout << endl << pseudoUser + " :" << endl << endl;
       persoUser.afficherEtat();
       cout << endl<< "Retour au menu ..." << endl << endl;
       sortiMenu = false;
@@ -51,7 +60,7 @@ int main()
     }
   }
   
-  //Arène
+  //ArÃ¨ne
     sortiArene = true;
   do{ //DEBUT BOUCLE ARENE
     
@@ -74,7 +83,7 @@ int main()
       case 1: {
         // Au combat !
         
-        cout << endl << "Retour a l'Arène ..." << endl << endl;
+        cout << endl << "Retour a l'ArÃ¨ne ..." << endl << endl;
         sortiArene = false;
         sortiMenu = false;
         break;
@@ -84,9 +93,9 @@ int main()
   }while(!sortiArene); //FIN BOUCLE ARENE
     
   }while(!sortiMenu); //FIN BOUCLE MENU
-  
+  **/
   cout << endl << endl;
   return 0;
 }
 
-//alias "comp"="g++ Arme.cpp Personnage.cpp main.cpp && ./a.out"
+//alias "c"="g++ Arme.cpp Personnage.cpp main.cpp && ./a.out"
